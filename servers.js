@@ -121,10 +121,10 @@ try {
     console.error('[GOOGLE] Disabled:', err.message);
 }
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 // Loopback only by default: nothing else on your network can trigger alerts.
 // If n8n runs in Docker it cannot reach loopback; start the bridge with BRIDGE_HOST=0.0.0.0 in that case.
-const HOST = process.env.BRIDGE_HOST || '127.0.0.1';
+const HOST = process.env.BRIDGE_HOST || '0.0.0.0';
 server.listen(PORT, HOST, () => {
     console.log(`[ONLINE] Bridge Server active on ${HOST}:${PORT}`);
 });
